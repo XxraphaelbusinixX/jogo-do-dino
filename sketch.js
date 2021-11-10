@@ -22,14 +22,16 @@ var grupodasnuvens;
 
 var mensagem
 
+var largura_tela = window.innerWidth
+
 function cactur(){
    if (frameCount % 70=== 0 ){
-      var cacturo = createSprite(600, 170, 10, 20);
+      var cacturo = createSprite(largura_tela, 170, 10, 20);
        cacturo.velocityX = -(5+pontuacao /100);
      grupodoscactur.add(cacturo)
      numero =  Math.round(random(1,6));
      console.log(numero);
-     cacturo.lifetime = 120
+     cacturo.lifetime = largura_tela
      switch(numero){
        case 1: cacturo.addImage(cactur1)
          break;
@@ -63,7 +65,7 @@ function reiniciar(){
   
 function criadordenuvens(){
   if (frameCount % 60=== 0 ){
-  var nuvem = createSprite(600, 50, 40, 10);
+  var nuvem = createSprite(largura_tela, 50, 40, 10);
     nuvem.scale = 0.9;
   nuvem.velocityX = -5;
     grupodasnuvens.add(nuvem)
@@ -71,7 +73,7 @@ function criadordenuvens(){
     nuvem.addImage(myfriendnuvem);
     nuvem.depth = trex.depth;
     trex.depth = trex.depth +1;
-    nuvem.lifetime = 135
+    nuvem.lifetime = largura_tela
       }
 
 }
@@ -99,7 +101,7 @@ function preload() {
 }
 
 function setup(){
-  createCanvas(600,200)
+  createCanvas(largura_tela,200)
   
   trex = createSprite(50, 150, 20, 40);
   trex.scale = 0.7;
@@ -111,7 +113,7 @@ function setup(){
   chaoInvisivel.visible = false;
   
   
-  reset = createSprite(300, 120, 50, 50);
+  reset = createSprite(largura_tela/2, 120, 50, 50);
   reset.addImage("resetover :)",resetimagen);
   reset.visible = false;
   chao = createSprite(300, 185, 1300, 20);
@@ -123,7 +125,7 @@ function setup(){
  grupodoscactur = new Group();
   grupodasnuvens = new Group();
   
-  gameOver = createSprite(300, 50, 50, 50)
+  gameOver = createSprite(largura_tela/2, 50, 50, 50)
   gameOver.addImage("gameoverimagina :)",gameoverimagina)
   gameOver.visible = false
   
