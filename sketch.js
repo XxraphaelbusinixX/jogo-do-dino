@@ -147,9 +147,10 @@ function draw(){
     if(pontuacao > 0 && pontuacao%100 ===0){
       ponto.play();
     }
-     if (keyDown("space") &&trex.y > 156) {
+     if ((keyDown("space") || touches.length>0) &&trex.y > 156) {
     trex.velocityY = -8;  
        pulo.play();
+       touches = []
   }
           if (chao.x<0){
     chao.x = chao.width/2
@@ -172,9 +173,9 @@ function draw(){
     gameOver.visible = true;
     reset.visible = true;
     
-    if (mousePressedOver(reset)){
+    if (mousePressedOver(reset) || touches.length>0){
       reiniciar()
-      
+      touches = []
     }
   }
   
